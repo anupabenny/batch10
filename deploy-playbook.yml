@@ -26,11 +26,11 @@
       state: started
       enabled: true
   - name: Stop already existing containers
-    command: sudo docker stop $(docker ps -aq)
+    shell: docker stop $(docker ps -aq)
   - name: Remove stopped containers
-    command: sudo docker rm $(docker ps -aq)
+    shell: docker rm $(docker ps -aq)
   - name: deploy myTestApp application
-    command: sudo docker run --name tomcat -it -d -p 8888:8888 anupabenny/images-repo1:tomcat-MyTestApp-image
+    command: docker run --name tomcat -it -d -p 8888:8888 anupabenny/images-repo1:tomcat-MyTestApp-image
   handlers:
   - name: run update
     apt:
